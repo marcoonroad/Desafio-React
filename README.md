@@ -2,10 +2,10 @@
 **- Tarefa 1 - Listagem de usuários**    
 Para essa tarefa crie uma página simples que contenha uma tabela de usuários.   
 Cada linha da tabela deverá ser um usuário, a primeira e segunda colunas serão **ID** e **Nome**, respectivamente.  
-A última célula de cada linha deverá ter opções de **excluir** e **editar** o respectivo usuário.  
+A última célula de cada linha deverá ter opções de **excluir** e **editar** o usuário correspondente.  
 Por último, a página deverá ter um botão de **"criar novo usuário"**, que ao clicar, exiba a página de criação. 
 
-**Bônus: Usuários pré-cadastrados**
+**Bônus: Usuários pré-cadastrados**  
 Considere que a tabela tenha 5 ou mais usuários pré-cadastrados e seja exibida assim que o servidor estiver de pé. 
 Para isso pode-se "mockar" os dados ou usar um serviço de mock equivalente, como o **JSONPlaceholder**.
 
