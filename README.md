@@ -12,7 +12,7 @@ Para isso pode-se "mockar" os dados ou usar um serviço de mock equivalente, com
 ## Tarefa 2 - Criação de usuário
 Criar uma tela que contenha um formulário para a criação de um novo usuário a ser inserido na tabela da tarefa anterior.
 
-Exemplo de usuário:
+Exemplo de usuário:  
 {  
 "id": 1,  
 "name": "John Doe",  
