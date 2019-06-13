@@ -45,7 +45,7 @@ visualizar o que está sendo inserido.
 
 #### Tarefa 3 - Editar e deletar usuário  
 Na página de listagem de usuários, os botões **editar** e **deletar** devem funcionar da seguinte maneira: 
-- **Editar*: 1. Redirecionar o usuário para uma página similar a de criação de usuário (podendo ser a mesma);  
+- **Editar**: 1. Redirecionar o usuário para uma página similar a de criação de usuário (podendo ser a mesma);  
               2. Os dados do usuário devem estar presentes em cada respectivo campo.
               
 - **Deletar:** 1. Remover totalmente o usuário da listagem.
