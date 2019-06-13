@@ -13,18 +13,18 @@ Para isso pode-se "mockar" os dados ou usar um serviço de mock equivalente, com
 Criar uma tela que contenha um formulário para a criação de um novo usuário a ser inserido na tabela da tarefa anterior.
 
 Exemplo de usuário:
-{
-"id": 1,
-"name": "John Doe",
-"email": "john.doe@gmail.com",
-"address": {
-"street": "Av. das Américas, 5500",
-"suite": "Apto 403",
-"city": "Rio de Janeiro",
-"zipcode": "12456-789"
-},
-"phone": "(99)99999-9999"
-}
+{  
+"id": 1,  
+"name": "John Doe",  
+"email": "john.doe@gmail.com",  
+"address": {  
+"street": "Av. das Américas, 5500",  
+"suite": "Apto 403",  
+"city": "Rio de Janeiro",  
+"zipcode": "12456-789"  
+},  
+"phone": "(99)99999-9999"  
+}  
 
 Todos os campos são inseridos manualmente (inclusive o campo **ID**) e devem seguir a estrutura acima.
 
