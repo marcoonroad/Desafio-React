@@ -31,7 +31,7 @@ Todos os campos são inseridos manualmente (inclusive o campo **ID**) e devem se
 Ao final do formulário, deverá haver um botão que insira o novo usuário na tabela com as informações incluídas, 
 além de exibir novamente a página de listagem de usuários.
 
-**Bônus 1: Campos obrigatórios e validações**
+**Bônus 1: Campos obrigatórios e validações**  
 Realizar a validação dos campos obrigatórios: id, name, email.
 
 - **id**- aceitar somente valores inteiros/não negativos e não pode estar vazio;
@@ -39,13 +39,13 @@ Realizar a validação dos campos obrigatórios: id, name, email.
 - **email**- não pode estar vazio e deve ser um e-mail válido;
 - **phone**- não é obrigatório, mas caso o usuário insira um telefone, deve estar no formato (99) 99999-9999
 
-**Bônus 2: Preview de usuário**
+**Bônus 2: Preview de usuário**  
 Criar um *preview* que mostre as informações do usuário à medida que as informações são inseridas. Apenas para fins de 
 visualizar o que está sendo inserido.
 
-#### Tarefa 3 - Editar e deletar usuário
+#### Tarefa 3 - Editar e deletar usuário  
 Na página de listagem de usuários, os botões **editar** e **deletar** devem funcionar da seguinte maneira: 
-- **Editar*:* 1. Redirecionar o usuário para uma página similar a de criação de usuário (podendo ser a mesma);
+- **Editar*: 1. Redirecionar o usuário para uma página similar a de criação de usuário (podendo ser a mesma);  
               2. Os dados do usuário devem estar presentes em cada respectivo campo.
               
 - **Deletar:** 1. Remover totalmente o usuário da listagem.
