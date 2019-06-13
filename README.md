@@ -1,4 +1,4 @@
-# Desafio-react
+# Desafio-React
 **- Tarefa 1 - Listagem de usuários**    
 Para essa tarefa crie uma página simples que contenha uma tabela de usuários.   
 Cada linha da tabela deverá ser um usuário, a primeira e segunda colunas serão **ID** e **Nome**, respectivamente.  
