@@ -5,7 +5,7 @@ Cada linha da tabela deverá ser um usuário, a primeira e segunda colunas serã
 A última célula de cada linha deverá ter opções de **excluir** e **editar** o respectivo usuário.  
 Por último, a página deverá ter um botão de **"criar novo usuário"**, que ao clicar, exiba a página de criação. 
 
-**Bônus-Usuários pré-cadastrados**
+**Bônus: Usuários pré-cadastrados**
 Considere que a tabela tenha 5 ou mais usuários pré-cadastrados e seja exibida assim que o servidor estiver de pé. 
 Para isso pode-se "mockar" os dados ou usar um serviço de mock equivalente, como o **JSONPlaceholder**.
 
@@ -31,7 +31,7 @@ Todos os campos são inseridos manualmente (inclusive o campo **ID**) e devem se
 Ao final do formulário, deverá haver um botão que insira o novo usuário na tabela com as informações incluídas, 
 além de exibir novamente a página de listagem de usuários.
 
-**Bônus 1 - Campos obrigatórios e validações**
+**Bônus 1: Campos obrigatórios e validações**
 Realizar a validação dos campos obrigatórios: id, name, email.
 
 - **id**- aceitar somente valores inteiros/não negativos e não pode estar vazio;
@@ -39,7 +39,7 @@ Realizar a validação dos campos obrigatórios: id, name, email.
 - **email**- não pode estar vazio e deve ser um e-mail válido;
 - **phone**- não é obrigatório, mas caso o usuário insira um telefone, deve estar no formato (99) 99999-9999
 
-**Bônus 2 - Preview de usuário**
+**Bônus 2: Preview de usuário**
 Criar um *preview* que mostre as informações do usuário à medida que as informações são inseridas. Apenas para fins de 
 visualizar o que está sendo inserido.
 
