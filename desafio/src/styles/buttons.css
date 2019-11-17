@@ -1,0 +1,47 @@
+.link-as-button {
+  text-decoration: none;
+}
+
+.link-as-button,
+.button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5em;
+  background-color: #4f4f4f;
+  color: #efefef;
+  border-radius: 5px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+
+.no-button-style, .no-link-style {
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  background: none;
+  display: inline-block;
+}
+
+.no-button-style img,
+.no-link-style img {
+  display: inline-block;
+}
+
+.link-as-button:hover,
+.button:hover {
+  background-color: #6f6f6f;
+}
+
+.button-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.button-icon:hover {
+  opacity: 0.5;
+}

@@ -1,0 +1,92 @@
+td,
+th {
+  padding: 0.25em;
+  text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+th {
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.large-table {
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+table td {
+  word-break: break-all;
+  vertical-align: middle;
+}
+
+.list-users-page {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+.users-col-id {
+  width: 6%;
+}
+
+.users-col-name {
+  width: auto;
+}
+
+.users-col-email {
+  width: auto;
+}
+
+.users-col-phone {
+  width: 12%;
+}
+
+.users-col-address {
+  width: 30%;
+}
+
+.users-col-remove {
+  width: 5%;
+}
+
+.users-col-edit {
+  width: 7%;
+}
+
+.users-cell-id {
+  text-align: right;
+  padding-right: 0.75em;
+  padding-left: 1em;
+}
+
+.users-cell-name {
+  text-align: left;
+}
+
+.users-cell-email {
+  text-align: left;
+}
+
+.users-cell-address {
+  text-align: left;
+  line-height: 1.35em;
+}
+
+.users-cell-edit {
+  padding-right: 1em;
+}
