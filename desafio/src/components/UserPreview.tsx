@@ -31,7 +31,7 @@ const getAddress = (user: IUser) => {
 const keyOrder = [
   {title: 'ID', getData: getId},
   {title: 'Name', getData: getName},
-  {title: 'Email', getData: getEmail},
+  {title: 'E-mail', getData: getEmail},
   {title: 'Phone', getData: getPhone},
   {title: 'Address', getData: getAddress},
 ];

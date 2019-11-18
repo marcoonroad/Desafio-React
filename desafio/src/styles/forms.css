@@ -67,6 +67,7 @@ input:focus::placeholder {
 .user-form-label-container span {
   text-align: left;
   display: block;
+  font-family: 'Lora', serif;
 }
 
 .user-form-address-container {
@@ -95,15 +96,15 @@ input:focus::placeholder {
 }
 
 .error-feedback-message {
-  font-size: 0.75em;
+  font-size: 0.85em;
   color: red;
   padding-top: 0.5em;
-  font-weight: 600;
-  font-family: sans-serif;
+  font-weight: 500;
+  font-family: 'Lora', sans-serif;
 }
 
 .user-form-preview-title {
   font-size: 1.3em;
-  font-family: sans-serif;
+  font-family: 'Lora', sans-serif;
   color: #282c34;
 }
