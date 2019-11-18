@@ -1,6 +1,7 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 import swal from 'sweetalert';
+import * as yup from 'yup';
 import {Formik, FormikProps, Form, Field, ErrorMessage} from 'formik';
 import {IUser} from '../store/types';
 import '../styles/buttons.css';
@@ -26,6 +27,22 @@ interface IUserData {
   };
   phone: string;
 }
+
+const phoneRegex = /\(\d\d\) \d{4,5}-\d{4}/;
+
+const validationSchema = yup.object().shape({
+  id: yup
+    .number()
+    .required('Please enter the user ID')
+    .positive('The user ID must be a positive number')
+    .integer('The user ID must be an integer number'),
+  name: yup.string().required("Please enter the user's full name"),
+  email: yup
+    .string()
+    .email('Please enter a valid email')
+    .required('Please enter an email'),
+  phone: yup.string().matches(phoneRegex, 'Please enter a valid phone number'),
+});
 
 const UserForm: React.FC<IUserForm> = ({
   afterSubmitRoute,
@@ -73,7 +90,7 @@ const UserForm: React.FC<IUserForm> = ({
     if (otherUserIds) {
       const filtered = otherUserIds.filter(id => id === userId);
       if (filtered.length > 0 && !errors.id) {
-        errors.id = `The user ID ${userId} already exists, please, choose an unique ID instead!`;
+        errors.id = `The user ID ${userId} already exists, please, choose an unique ID instead`;
       }
     }
 
@@ -140,23 +157,35 @@ const UserForm: React.FC<IUserForm> = ({
           <label className="user-form-label-container">
             <span>Full name:</span>
             <Field type="text" name="name" placeholder="full name" />
-            <ErrorMessage name="name" component="span" />
+            <ErrorMessage
+              name="name"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
 
           <br />
 
           <label className="user-form-label-container">
             <span>E-mail:</span>
-            <Field type="email" name="email" placeholder="email" />
-            <ErrorMessage name="email" component="span" />
+            <Field type="text" name="email" placeholder="email" />
+            <ErrorMessage
+              name="email"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
 
           <br />
 
           <label className="user-form-label-container">
             <span>Phone number:</span>
-            <Field type="text" name="phone" placeholder="phone number" />
-            <ErrorMessage name="phone" component="span" />
+            <Field type="text" name="phone" placeholder="(00) 00000-0000" />
+            <ErrorMessage
+              name="phone"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
         </div>
 
@@ -172,7 +201,11 @@ const UserForm: React.FC<IUserForm> = ({
               name="address.street"
               placeholder="address street"
             />
-            <ErrorMessage name="address.street" component="span" />
+            <ErrorMessage
+              name="address.street"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
 
           <br />
@@ -184,7 +217,11 @@ const UserForm: React.FC<IUserForm> = ({
               name="address.suite"
               placeholder="address suite"
             />
-            <ErrorMessage name="address.suite" component="span" />
+            <ErrorMessage
+              name="address.suite"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
 
           <br />
@@ -192,7 +229,11 @@ const UserForm: React.FC<IUserForm> = ({
           <label className="user-form-label-container">
             <span>City:</span>
             <Field type="text" name="address.city" placeholder="address city" />
-            <ErrorMessage name="address.city" component="span" />
+            <ErrorMessage
+              name="address.city"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
 
           <br />
@@ -204,7 +245,11 @@ const UserForm: React.FC<IUserForm> = ({
               name="address.zipcode"
               placeholder="address zipcode"
             />
-            <ErrorMessage name="address.zipcode" component="span" />
+            <ErrorMessage
+              name="address.zipcode"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
         </div>
       </div>
@@ -232,7 +277,10 @@ const UserForm: React.FC<IUserForm> = ({
       <Formik
         initialValues={initialState}
         validate={validation}
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+        validateOnBlur={true}
+        validateOnChange={false}>
         {formikCallback}
       </Formik>
     </div>
