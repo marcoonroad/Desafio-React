@@ -6,7 +6,7 @@ O desafio em React se encontra na pasta `desafio/`. Para inicializar
 a aplicação em modo _watch_, basta usar o comando `$ yarn start` ou
 `$ npm run start` (assumindo que a instalação foi feita anteriormente
 com `$ yarn` ou `$ npm i`). Para gerar um build pronto para deploy, o
-comando usado é `$ yarn deploy`. Para fins de teste, o desafio já está
+comando usado é `$ yarn build`. Para fins de teste, o desafio já está
 hospedado (no Surge) em https://fulllab-react-test.surge.sh.
 
 Foram utilizadas as seguintes ferramentas:
@@ -15,7 +15,7 @@ Foram utilizadas as seguintes ferramentas:
 - `formik`, para criação de formulários sem muito boilerplate
 - `yup`, para validações simples sobre os campos de formulário
 - `redux-thunk`, para orquestar despacho de ações assíncronas
-- `react-router`, para interligar transações entre "páginas"
+- `react-router`, para interligar transições entre "páginas"
 - `prettier`, para formatar o código em um padrão consistente
 - `husky`, para rodar scripts ao capturar eventos do repositório Git
 - `sweetalert`, para modals estilizados de prompt/alerta para o usuário
@@ -81,8 +81,8 @@ visualizar o que está sendo inserido.
 
 Na página de listagem de usuários, os botões **editar** e **deletar** devem funcionar da seguinte maneira:
 
-- **Editar**: 1. Redirecionar o usuário para uma página similar a de criação de usuário (podendo ser a mesma);  
-   2. Os dados do usuário devem estar presentes em cada respectivo campo.
+- **Editar**: 1. Redirecionar o usuário para uma página similar a de criação de usuário (podendo ser a mesma);
+  2.  Os dados do usuário devem estar presentes em cada respectivo campo.
 - **Deletar:** 1. Remover totalmente o usuário da listagem.
 
 ##### Informações adicionais
