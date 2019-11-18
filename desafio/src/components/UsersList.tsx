@@ -1,7 +1,9 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import swal from 'sweetalert';
 import {IUser} from '../store/types';
 import '../styles/tables.css';
+import '../styles/dialogs.css';
 import deleteIcon from '../static/delete-cross-icon.svg';
 import editIcon from '../static/edit-pencil-icon.svg';
 
@@ -52,7 +54,24 @@ const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
 
           const removeMe = (event: any) => {
             event.preventDefault();
-            removeUser(user.id);
+
+            swal({
+              title: 'Are you sure?',
+              text:
+                'Once excluded, this user information will no longer be stored on database!',
+              icon: 'warning',
+              buttons: [true, true],
+              dangerMode: true,
+            }).then(willDelete => {
+              if (willDelete) {
+                removeUser(user.id);
+                swal({
+                  title: 'OK Computer',
+                  text: `Poof! User ${shortName} excluded with success!`,
+                  icon: 'success',
+                });
+              }
+            });
           };
 
           return (
@@ -71,7 +90,12 @@ const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
                   type="button"
                   onClick={removeMe}
                   className="no-button-style">
-                  <img src={deleteIcon} className="button-icon" alt={removeTitle} title={removeTitle}/>
+                  <img
+                    src={deleteIcon}
+                    className="button-icon"
+                    alt={removeTitle}
+                    title={removeTitle}
+                  />
                 </button>
               </td>
               <td className="users-cell-edit">
@@ -79,7 +103,12 @@ const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
                   to={editRoute}
                   title={editTitle}
                   className="no-link-style">
-                  <img src={editIcon} className="button-icon" alt={editTitle} title={editTitle}/>
+                  <img
+                    src={editIcon}
+                    className="button-icon"
+                    alt={editTitle}
+                    title={editTitle}
+                  />
                 </NavLink>
               </td>
             </tr>

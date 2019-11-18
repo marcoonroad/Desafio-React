@@ -1,9 +1,11 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import swal from 'sweetalert';
 import {Formik, FormikProps, Form, Field, ErrorMessage} from 'formik';
 import {IUser} from '../store/types';
 import '../styles/buttons.css';
 import '../styles/forms.css';
+import '../styles/dialogs.css';
 
 interface IUserForm {
   afterSubmitRoute: string;
@@ -80,9 +82,27 @@ const UserForm: React.FC<IUserForm> = ({
       },
       phone: values.phone,
     };
-    options.setSubmitting(false);
+
+    const names = user.name.split(' ');
+    const firstName = names[0];
+    const lastName = names[names.length - 1];
+    const shortName =
+      names.length === 1 ? firstName : `${firstName} ${lastName}`;
+
+    const modalText =
+      submitText === 'Save'
+        ? `Updated personal info for ${shortName} with success!`
+        : `Registered new user ${shortName} with success!`;
+
     handleUserSubmit(user);
-    history.push(afterSubmitRoute);
+    swal({
+      title: 'Très bien!',
+      text: modalText,
+      icon: 'success',
+    }).then(() => {
+      options.setSubmitting(false);
+      history.push(afterSubmitRoute);
+    });
   };
 
   const handleCancel = (event: any) => {
@@ -132,7 +152,11 @@ const UserForm: React.FC<IUserForm> = ({
 
           <label className="user-form-label-container">
             <span>Street:</span>
-            <Field type="text" name="address.street" placeholder="address street" />
+            <Field
+              type="text"
+              name="address.street"
+              placeholder="address street"
+            />
             <ErrorMessage name="address.street" component="span" />
           </label>
 
@@ -140,7 +164,11 @@ const UserForm: React.FC<IUserForm> = ({
 
           <label className="user-form-label-container">
             <span>Suite:</span>
-            <Field type="text" name="address.suite" placeholder="address suite" />
+            <Field
+              type="text"
+              name="address.suite"
+              placeholder="address suite"
+            />
             <ErrorMessage name="address.suite" component="span" />
           </label>
 
@@ -156,7 +184,11 @@ const UserForm: React.FC<IUserForm> = ({
 
           <label className="user-form-label-container">
             <span>Zipcode:</span>
-            <Field type="text" name="address.zipcode" placeholder="address zipcode" />
+            <Field
+              type="text"
+              name="address.zipcode"
+              placeholder="address zipcode"
+            />
             <ErrorMessage name="address.zipcode" component="span" />
           </label>
         </div>

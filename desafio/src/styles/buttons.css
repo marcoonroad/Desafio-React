@@ -17,7 +17,8 @@
   outline: none;
 }
 
-.no-button-style, .no-link-style {
+.no-button-style,
+.no-link-style {
   text-decoration: none;
   cursor: pointer;
   box-shadow: none;
@@ -34,7 +35,10 @@
 
 .link-as-button:hover,
 .button:hover {
+  /*
   background-color: #6f6f6f;
+  */
+  opacity: 0.65;
 }
 
 .button-icon {
@@ -43,5 +47,5 @@
 }
 
 .button-icon:hover {
-  opacity: 0.5;
+  opacity: 0.65;
 }

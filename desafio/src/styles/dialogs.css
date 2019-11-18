@@ -1,0 +1,11 @@
+.swal-modal,
+.swal-modal * {
+  font-family: sans-serif;
+}
+
+.swal-footer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
