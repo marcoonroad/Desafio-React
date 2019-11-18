@@ -41,7 +41,7 @@ const mapState = (state: AppState) => ({
 const mapDispatch = (dispatch: any, ownProps: any) => ({
   saveUser: (updatedUser: IUser) => {
     // FIXME: only for test purposes
-    if (Math.random() * 5 <= 2) {
+    if (Math.round(Math.random() * 10) <= 1) {
       return Promise.reject('Unexpected error while saving user!');
     }
 
