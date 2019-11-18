@@ -30,7 +30,7 @@ const ListUsers: React.FC<IListUsers> = ({editRoutePrefix, newUserRoute}) => {
       <NavLink
         to={newUserRoute}
         title="Add new user"
-        className="link-as-button">
+        className="link-as-button positive-button-color">
         New User
       </NavLink>
     </div>

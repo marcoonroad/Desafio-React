@@ -21,10 +21,13 @@ const UserFilter: React.FC<IUserFilter> = ({
   saveUser,
 }) => {
   const user = users.filter(user => user.id === userId)[0];
+  const differentUsers = users.filter(user => user.id !== userId);
+  const otherUserIds = differentUsers.map(user => user.id);
 
   return (
     <UserForm
       user={user}
+      otherUserIds={otherUserIds}
       handleUserSubmit={saveUser}
       afterSubmitRoute={afterSubmitRoute}
     />

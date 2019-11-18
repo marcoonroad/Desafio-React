@@ -7,8 +7,8 @@
   cursor: pointer;
   display: inline-block;
   padding: 0.5em;
-  background-color: #4f4f4f;
-  color: #efefef;
+  background-color: #282c34;
+  color: #ffffff;
   border-radius: 5px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -35,9 +35,6 @@
 
 .link-as-button:hover,
 .button:hover {
-  /*
-  background-color: #6f6f6f;
-  */
   opacity: 0.65;
 }
 
@@ -48,4 +45,13 @@
 
 .button-icon:hover {
   opacity: 0.65;
+}
+
+.positive-button-color {
+  background-color: #4f5d73 !important;
+}
+
+.negative-button-color {
+  background-color: #efefef !important;
+  color: #282c34 !important;
 }

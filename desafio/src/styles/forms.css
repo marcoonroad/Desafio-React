@@ -6,6 +6,15 @@ input {
 
   border: none;
   border-bottom: 2px solid #3f3f3f;
+  transition: 0.25s;
+}
+
+input:focus {
+  border-color: #4f5d73;
+}
+
+input:focus::placeholder {
+  color: transparent;
 }
 
 .user-form-page {
@@ -55,7 +64,7 @@ input {
 .user-form-address-container {
   border-radius: 5px;
   border-style: solid;
-  border-color: #005b4a;
+  border-color: #4f5d73;
   border-width: 2px;
   padding: 1.5em;
   margin: 0em;
@@ -69,10 +78,18 @@ input {
   display: table;
   padding-left: 0.25em;
   padding-right: 0.25em;
-  color: #005b4a;
+  color: #4f5d73;
 }
 
 .user-form-button {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+.error-feedback-message {
+  font-size: 0.75em;
+  color: red;
+  padding-top: 0.5em;
+  font-weight: 600;
+  font-family: sans-serif;
 }

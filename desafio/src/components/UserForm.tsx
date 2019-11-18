@@ -10,6 +10,7 @@ import '../styles/dialogs.css';
 interface IUserForm {
   afterSubmitRoute: string;
   user?: IUser;
+  otherUserIds?: number[];
   handleUserSubmit: (user: IUser) => any;
 }
 
@@ -29,6 +30,7 @@ interface IUserData {
 const UserForm: React.FC<IUserForm> = ({
   afterSubmitRoute,
   user,
+  otherUserIds,
   handleUserSubmit,
 }) => {
   const history = useHistory();
@@ -64,7 +66,16 @@ const UserForm: React.FC<IUserForm> = ({
 
   // can make HTTP requests to validate unique ID, for example
   const validation = async (values: IUserData) => {
-    const errors = {};
+    const errors: any = {};
+
+    const userId = Number.parseInt(values.id, 10);
+
+    if (otherUserIds) {
+      const filtered = otherUserIds.filter(id => id === userId);
+      if (filtered.length > 0 && !errors.id) {
+        errors.id = `The user ID ${userId} already exists, please, choose an unique ID instead!`;
+      }
+    }
 
     return errors;
   };
@@ -117,7 +128,11 @@ const UserForm: React.FC<IUserForm> = ({
           <label className="user-form-label-container">
             <span>Identifier:</span>
             <Field type="text" name="id" placeholder="identifier" />
-            <ErrorMessage name="id" component="span" />
+            <ErrorMessage
+              name="id"
+              component="span"
+              className="error-feedback-message"
+            />
           </label>
 
           <br />
@@ -198,13 +213,13 @@ const UserForm: React.FC<IUserForm> = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="button user-form-button">
+          className="button user-form-button positive-button-color">
           {submitText}
         </button>
 
         <button
           type="button"
-          className="button user-form-button"
+          className="button user-form-button negative-button-color"
           onClick={handleCancel}>
           Cancel
         </button>
