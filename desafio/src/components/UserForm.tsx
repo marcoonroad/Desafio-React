@@ -284,7 +284,13 @@ const UserForm: React.FC<IUserForm> = ({
       <div className="user-form-submit-container">
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={
+            !!errors.id ||
+            !!errors.name ||
+            !!errors.email ||
+            !!errors.phone ||
+            isSubmitting
+          }
           className="button user-form-button positive-button-color">
           {submitText}
         </button>

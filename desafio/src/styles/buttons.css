@@ -55,3 +55,7 @@
   background-color: #efefef !important;
   color: #282c34 !important;
 }
+
+button:disabled {
+  text-decoration: line-through;
+}
