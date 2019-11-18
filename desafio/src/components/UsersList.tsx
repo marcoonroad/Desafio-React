@@ -10,7 +10,7 @@ import editIcon from '../static/edit-pencil-icon.svg';
 interface IUsers {
   editRoutePrefix: string;
   users: IUser[];
-  removeUser: (id: number) => any;
+  removeUser: (id: number) => Promise<any>;
 }
 
 const noData = 'N/A';
@@ -56,26 +56,36 @@ const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
           const removeTitle = `Remove user ${shortName}`;
           const editTitle = `Edit user ${shortName}`;
 
-          const removeMe = (event: any) => {
+          const removeMe = async (event: any) => {
             event.preventDefault();
 
-            swal({
-              title: 'Are you sure?',
-              text:
-                'Once excluded, this user information will no longer be stored on database!',
-              icon: 'warning',
-              buttons: [true, true],
-              dangerMode: true,
-            }).then(willDelete => {
+            try {
+              const willDelete = await swal({
+                title: 'Are you sure?',
+                text:
+                  'Once excluded, this user information will no longer be stored on database!',
+                icon: 'warning',
+                buttons: [true, true],
+                dangerMode: true,
+              });
               if (willDelete) {
-                removeUser(user.id);
-                swal({
+                await removeUser(user.id);
+                await swal({
                   title: 'OK Computer',
                   text: `Poof! User ${shortName} excluded with success!`,
                   icon: 'success',
                 });
               }
-            });
+            } catch (reason) {
+              console.error(reason);
+              // FIXME: provide a different message in production
+              await swal({
+                title: 'Test/Mock error',
+                text:
+                  'This is an automatically generated error to mock unexpected / unknown behaviors in development mode, please try again later',
+                icon: 'error',
+              });
+            }
           };
 
           return (

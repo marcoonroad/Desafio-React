@@ -11,7 +11,7 @@ interface IUserFilter {
   afterSubmitRoute: string;
   userId: number;
   users: IUser[];
-  saveUser: (updatedUser: IUser) => any;
+  saveUser: (updatedUser: IUser) => Promise<any>;
 }
 
 const UserFilter: React.FC<IUserFilter> = ({
@@ -39,7 +39,14 @@ const mapState = (state: AppState) => ({
 });
 
 const mapDispatch = (dispatch: any, ownProps: any) => ({
-  saveUser: (updatedUser: IUser) => dispatch(saveUserAsync(updatedUser)),
+  saveUser: (updatedUser: IUser) => {
+    // FIXME: only for test purposes
+    if (Math.random() * 5 <= 2) {
+      return Promise.reject('Unexpected error while saving user!');
+    }
+
+    return dispatch(saveUserAsync(updatedUser));
+  },
 });
 
 const ConnectedUserFilter = connect(mapState, mapDispatch)(UserFilter);

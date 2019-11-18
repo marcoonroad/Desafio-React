@@ -13,7 +13,13 @@ const mapState = (state: AppState) => ({
 });
 
 const mapDispatch = (dispatch: any, ownProps: any) => ({
-  removeUser: (id: number) => dispatch(removeUserAsync(id)),
+  removeUser: (id: number) => {
+    // FIXME: only for test purposes, drop away from production
+    if (Math.random() * 5 <= 2) {
+      return Promise.reject('Unexpected error while removing user!');
+    }
+    return dispatch(removeUserAsync(id));
+  },
 });
 
 const ConnectedUsers = connect(mapState, mapDispatch)(UsersList);

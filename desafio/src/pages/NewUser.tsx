@@ -14,7 +14,13 @@ const mapState = (state: AppState) => {
 };
 
 const mapDispatch = (dispatch: any, ownProps: any) => ({
-  handleUserSubmit: (newUser: IUser) => dispatch(addUserAsync(newUser)),
+  handleUserSubmit: (newUser: IUser) => {
+    // FIXME: testing, remove on production
+    if (Math.random() * 5 <= 2) {
+      return Promise.reject('Unexpected error while registering new user!');
+    }
+    return dispatch(addUserAsync(newUser));
+  },
 });
 
 const ConnectedUserForm = connect(mapState, mapDispatch)(UserForm);

@@ -13,7 +13,7 @@ interface IUserForm {
   afterSubmitRoute: string;
   user?: IUser;
   otherUserIds?: number[];
-  handleUserSubmit: (user: IUser) => any;
+  handleUserSubmit: (user: IUser) => Promise<any>;
 }
 
 interface IUserData {
@@ -98,7 +98,7 @@ const UserForm: React.FC<IUserForm> = ({
     return errors;
   };
 
-  const handleSubmit = (values: IUserData, options: any) => {
+  const handleSubmit = async (values: IUserData, options: any) => {
     const user: IUser = {
       id: Number.parseInt(values.id, 10),
       name: values.name,
@@ -123,15 +123,25 @@ const UserForm: React.FC<IUserForm> = ({
         ? `Updated personal info for ${shortName} with success!`
         : `Registered new user ${shortName} with success!`;
 
-    handleUserSubmit(user);
-    swal({
-      title: 'Très bien!',
-      text: modalText,
-      icon: 'success',
-    }).then(() => {
+    try {
+      await handleUserSubmit(user);
+      await swal({
+        title: 'Très bien!',
+        text: modalText,
+        icon: 'success',
+      });
       options.setSubmitting(false);
       history.push(afterSubmitRoute);
-    });
+    } catch (reason) {
+      console.error(reason);
+      // FIXME: provide a different and helpful message in production
+      await swal({
+        title: 'Test/mock error',
+        text:
+          'This is an automatically generated error to test the app in development mode, please try again later',
+        icon: 'error',
+      });
+    }
   };
 
   const handleCancel = (event: any) => {
