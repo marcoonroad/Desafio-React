@@ -27,7 +27,8 @@ th {
   border-collapse: collapse;
 }
 
-table td {
+table td,
+table th {
   word-break: break-all;
   vertical-align: middle;
 }
@@ -89,4 +90,23 @@ table td {
 
 .users-cell-edit {
   padding-right: 1em;
+}
+
+/* used for preview table */
+.preview-col-key {
+  width: 30%;
+}
+
+.preview-col-value {
+  width: auto;
+}
+
+.preview-cell-key {
+  text-align: right;
+  padding: 1em;
+}
+
+.preview-cell-value {
+  text-align: left;
+  padding: 1em;
 }

@@ -40,10 +40,10 @@
     "name": "David Arrows",
     "email": "david.arrows@gmail.com",
     "address": {
-       "street": "Abbey Road, 9",
-       "suite": "Apto 9",
-       "city": "London",
-       "zipcode": "NW8 0AE"
+      "street": "Abbey Road, 9",
+      "suite": "Apto 9",
+      "city": "London",
+      "zipcode": "NW8 0AE"
     },
     "phone": "(99) 99999-9999"
   },

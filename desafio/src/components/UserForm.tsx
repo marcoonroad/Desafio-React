@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import * as yup from 'yup';
 import {Formik, FormikProps, Form, Field, ErrorMessage} from 'formik';
 import {IUser} from '../store/types';
+import UserPreview from './UserPreview';
 import '../styles/buttons.css';
 import '../styles/forms.css';
 import '../styles/dialogs.css';
@@ -138,7 +139,12 @@ const UserForm: React.FC<IUserForm> = ({
     history.goBack();
   };
 
-  const formikCallback = ({isSubmitting}: FormikProps<IUserData>) => (
+  const formikCallback = ({
+    isSubmitting,
+    values,
+    errors,
+    touched,
+  }: FormikProps<IUserData>) => (
     <Form>
       <div className="user-form-data-container">
         <div className="user-form-contact-container">
@@ -251,6 +257,16 @@ const UserForm: React.FC<IUserForm> = ({
               className="error-feedback-message"
             />
           </label>
+        </div>
+
+        <div className="user-form-preview-container">
+          {(() => {
+            const previewUser = {
+              ...values,
+              id: values.id ? Number.parseInt(values.id, 10) : -1,
+            };
+            return <UserPreview user={previewUser} />;
+          })()}
         </div>
       </div>
 

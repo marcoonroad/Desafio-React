@@ -10,7 +10,7 @@ import {
   REMOVE_USER,
 } from '../../types';
 
-const emptyMap : Immutable.Map<number, IUser> = Immutable.fromJS({})
+const emptyMap: Immutable.Map<number, IUser> = Immutable.fromJS({});
 
 let initialState: IUsersState = {
   users: emptyMap,
@@ -27,14 +27,20 @@ const usersReducer = (
   switch (action.type) {
     case ADD_USER:
       if (!state.users.get(action.data.id)) {
-        const updated = state.users.set(action.data.id, Immutable.fromJS(action.data));
+        const updated = state.users.set(
+          action.data.id,
+          Immutable.fromJS(action.data),
+        );
         return {users: updated};
       }
       return state;
 
     case SAVE_USER:
       if (state.users.get(action.data.id)) {
-        const updated = state.users.set(action.data.id, Immutable.fromJS(action.data));
+        const updated = state.users.set(
+          action.data.id,
+          Immutable.fromJS(action.data),
+        );
         return {users: updated};
       }
       return state;
@@ -42,7 +48,6 @@ const usersReducer = (
     case REMOVE_USER:
       if (state.users.get(action.data.id)) {
         const updated = state.users.remove(action.data.id);
-        console.log("REMOVED " + action.data.id);
         return {users: updated};
       }
       return state;

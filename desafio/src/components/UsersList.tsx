@@ -13,6 +13,8 @@ interface IUsers {
   removeUser: (id: number) => any;
 }
 
+const noData = 'N/A';
+
 const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
   return (
     <table className="large-table">
@@ -40,8 +42,10 @@ const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
         {users.map(user => {
           const editRoute = editRoutePrefix + '/' + user.id.toString();
 
-          const address = `${user.address.street}, ${user.address.suite}`;
-          const location = `${user.address.city}, ${user.address.zipcode}`;
+          const address = `${user.address.street || noData}, ${user.address
+            .suite || noData}`;
+          const location = `${user.address.city || noData}, ${user.address
+            .zipcode || noData}`;
 
           const names = user.name.split(' ');
           const firstName = names[0];
