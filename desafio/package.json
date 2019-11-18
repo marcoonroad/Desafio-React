@@ -9,7 +9,6 @@
     "@types/react-dom": "16.9.4",
     "@types/react-redux": "7.1.5",
     "@types/react-router-dom": "5.1.2",
-    "@types/styled-components": "4.4.0",
     "@types/yup": "0.26.24",
     "formik": "2.0.4",
     "immutable": "4.0.0-rc.12",
@@ -21,7 +20,6 @@
     "redux": "4.0.4",
     "redux-devtools-extension": "2.13.8",
     "redux-thunk": "2.3.0",
-    "styled-components": "4.4.1",
     "sweetalert": "2.1.2",
     "typescript": "3.7.2",
     "yup": "0.27.0"
@@ -38,7 +36,11 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
