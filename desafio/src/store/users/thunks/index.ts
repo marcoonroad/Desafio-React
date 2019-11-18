@@ -10,7 +10,7 @@ export type IDispatcher = (action: IUserAction) => void;
 export type IGetState = () => {users: IUsersState};
 
 export const addUserAsync = (
-  newUser: IUser,
+  newUser: IUser
 ): ThunkAction<void, AppState, null, Action<IUser>> => {
   return async (dispatch: IDispatcher, getState: IGetState) => {
     dispatch(addUser(newUser));
@@ -18,7 +18,7 @@ export const addUserAsync = (
 };
 
 export const saveUserAsync = (
-  updatedUser: IUser,
+  updatedUser: IUser
 ): ThunkAction<void, AppState, null, Action<IUser>> => {
   return async (dispatch: IDispatcher, getState: IGetState) => {
     dispatch(saveUser(updatedUser));
@@ -26,7 +26,7 @@ export const saveUserAsync = (
 };
 
 export const removeUserAsync = (
-  id: number,
+  id: number
 ): ThunkAction<void, AppState, null, Action<number>> => {
   return async (dispatch: IDispatcher, getState: IGetState) => {
     dispatch(removeUser(id));
