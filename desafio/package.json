@@ -27,6 +27,8 @@
     "yup": "0.27.0"
   },
   "scripts": {
+    "predeploy": "yarn run build && mv build/index.html build/200.html",
+    "deploy": "surge --project ./build --domain https://fulllab-react-test.surge.sh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,15 +38,14 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "surge": "^0.21.3"
   }
 }

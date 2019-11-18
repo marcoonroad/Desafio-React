@@ -101,3 +101,9 @@ input:focus::placeholder {
   font-weight: 600;
   font-family: sans-serif;
 }
+
+.user-form-preview-title {
+  font-size: 1.3em;
+  font-family: sans-serif;
+  color: #282c34;
+}

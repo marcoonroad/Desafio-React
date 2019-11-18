@@ -260,6 +260,7 @@ const UserForm: React.FC<IUserForm> = ({
         </div>
 
         <div className="user-form-preview-container">
+          <h2 className="user-form-preview-title">Preview</h2>
           {(() => {
             const previewUser = {
               ...values,
