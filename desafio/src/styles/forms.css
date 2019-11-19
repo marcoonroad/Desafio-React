@@ -9,6 +9,12 @@ input {
   transition: 0.25s;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
 input:focus {
   border-color: #78cbf2;
 }

@@ -34,8 +34,8 @@ const Users: React.FC<IUsers> = ({editRoutePrefix, users, removeUser}) => {
           <th className="users-cell-email">E-mail</th>
           <th className="users-cell-phone">Phone</th>
           <th className="users-cell-address">Address</th>
-          <th className="users-cell-remove">--</th>
-          <th className="users-cell-edit">--</th>
+          <th className="users-cell-remove"></th>
+          <th className="users-cell-edit"></th>
         </tr>
       </thead>
       <tbody>

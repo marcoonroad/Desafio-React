@@ -2,6 +2,11 @@
   text-decoration: none;
 }
 
+.link-as-button:focus,
+.button:focus {
+  outline: none;
+}
+
 .link-as-button,
 .button {
   cursor: pointer;
