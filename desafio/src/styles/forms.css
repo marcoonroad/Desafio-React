@@ -88,6 +88,7 @@ input:focus::placeholder {
   padding-left: 0.25em;
   padding-right: 0.25em;
   color: #4f5d73;
+  font-family: 'Lora', serif;
 }
 
 .user-form-button {
@@ -100,11 +101,11 @@ input:focus::placeholder {
   color: red;
   padding-top: 0.5em;
   font-weight: 500;
-  font-family: 'Lora', sans-serif;
+  font-family: 'Lora', serif;
 }
 
 .user-form-preview-title {
   font-size: 1.3em;
-  font-family: 'Lora', sans-serif;
+  font-family: 'Lora', serif;
   color: #282c34;
 }

@@ -1,6 +1,6 @@
 {
   "short_name": "React Test",
-  "name": "Fulllab / Total Commit React Job Interview Test",
+  "name": "",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "start_url": "/list-users?source=pwa",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "theme_color": "#4f5d73",
+  "background_color": "#282c34"
 }
