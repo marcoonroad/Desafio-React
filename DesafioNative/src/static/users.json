@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Woods",
+    "email": "alice.woods@gmail.com",
+    "address": {
+      "street": "Fifth Avenue, 50",
+      "suite": "Apto 5050",
+      "city": "New York City",
+      "zipcode": "10011"
+    },
+    "phone": "(50) 95050-5050"
+  },
+  {
+    "id": 2,
+    "name": "Bob Salts",
+    "email": "bob.salts@gmail.com",
+    "address": {
+      "street": "Hollywood Walk of Fame, 10",
+      "suite": "Apto 100",
+      "city": "Los Angeles",
+      "zipcode": "90028"
+    },
+    "phone": "(10) 91010-1010"
+  },
+  {
+    "id": 3,
+    "name": "Carol Stone",
+    "email": "carol.stone@gmail.com",
+    "address": {
+      "street": "Lombard Street, 3",
+      "suite": "Apto 3",
+      "city": "San Francisco",
+      "zipcode": "1112"
+    },
+    "phone": "(33) 93333-3333"
+  },
+  {
+    "id": 4,
+    "name": "David Arrows",
+    "email": "david.arrows@gmail.com",
+    "address": {
+      "street": "Abbey Road, 9",
+      "suite": "Apto 9",
+      "city": "London",
+      "zipcode": "NW8 0AE"
+    },
+    "phone": "(99) 99999-9999"
+  },
+  {
+    "id": 5,
+    "name": "Eve Gossip",
+    "email": "eve.gossip@gmail.com",
+    "address": {
+      "street": "Santa Monica Boulevard, 1717",
+      "suite": "Apto 171",
+      "city": "California",
+      "zipcode": "90401"
+    },
+    "phone": "(17) 91717-1717"
+  }
+]
