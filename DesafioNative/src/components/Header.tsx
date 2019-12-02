@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Dimensions} from 'react-native';
+import {View, Text, Image, Dimensions} from 'react-native';
 
 const Header : React.FC = () => {
   const {width} = Dimensions.get('window');
@@ -15,10 +15,20 @@ const Header : React.FC = () => {
           width: width * 0.3,
           height: width * 0.3,
           marginTop: width * 0.05,
-          marginBottom: width * 0.05,
+       // marginBottom: width * 0.05,
           marginLeft: 'auto',
           marginRight: 'auto',
         }} />
+      <View style={{
+        marginTop: width * 0.05,
+        marginBottom: width * 0.05,
+      }}>
+        <Text style={{
+            color: '#ffffff',
+            fontSize: 22,
+            textAlign: 'center',
+        }}>Users list</Text>
+      </View>
     </View>
   );
 };

@@ -9,7 +9,6 @@
  */
 
 import React from 'react';
-import logoImage from './src/static/circle-icon-profile.svg';
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,6 +16,8 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
+  Dimensions,
 } from 'react-native';
 
 import {
@@ -27,15 +28,31 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Header from './src/components/Header';
+import Table from './src/components/Table';
 
 const App = () => {
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
+
+  const {width} = Dimensions.get('window');
+
   return (
     <>
       <StatusBar backgroundColor="#282c34" barStyle="light-content"
         animated={false} translucent={false} hidden={false} />
-      <SafeAreaView>
-        <Header/>
+      <SafeAreaView style={{backgroundColor: '#ffffff'}}>
+        <Header />
+        <Table />
+
+        <View style={{
+          width: width * 0.3,
+          backgroundColor: '#ffffff',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}>
+          <Button title="New User" onPress={() => null}
+            color='#4f5d73' />
+        </View>
+
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
