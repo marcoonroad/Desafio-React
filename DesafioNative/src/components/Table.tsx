@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Dimensions, FlatList} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  TouchableWithoutFeedback,
+  Dimensions,
+  FlatList
+} from 'react-native';
 import Row from './Row';
 
 interface IUser {
@@ -27,7 +33,9 @@ const Table: React.FC = () => {
   const {width} = Dimensions.get('window');
 
   return (
-    <View style={{paddingVertical: width * 0.05}}>
+    <View style={{
+      paddingVertical: width * 0.05
+    }}>
       <FlatList
         data={require('../static/users.json')}
         ListHeaderComponent={TableHeader}

@@ -1,7 +1,11 @@
 import React from 'react';
 import {View, Text, Image, Dimensions} from 'react-native';
 
-const Header : React.FC = () => {
+interface IHeader {
+  title: string
+}
+
+const Header : React.FC<IHeader> = ({ title }) => {
   const {width} = Dimensions.get('window');
 
   return (
@@ -27,7 +31,7 @@ const Header : React.FC = () => {
             color: '#ffffff',
             fontSize: 22,
             textAlign: 'center',
-        }}>Users list</Text>
+        }}>{title}</Text>
       </View>
     </View>
   );
