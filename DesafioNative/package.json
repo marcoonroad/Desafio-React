@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "release": "cd android && ./gradlew assembleRelease",
+    "postrelease": "cd android && ./gradlew installRelease",
     "format": "prettier --write './**/*.{html,json,css,ts,tsx,js,yaml,md}'",
     "check-format": "prettier --check './**/*.{html,json,css,ts,tsx,js,yaml,md}'",
     "android": "react-native run-android",
