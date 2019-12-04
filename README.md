@@ -2,6 +2,31 @@
 
 Candidato: Marco Aurélio da Silva
 
+O desafio do React Native versão 0.61.5 se encontra na pasta `DesafioNative/`.
+Foram utilizadas as mesmas stacks de ferramentas do projeto React Web, com algumas
+exceções, que foram:
+
+- `react-router`, a preferência entre desenvolvedores React Native é o uso da
+  biblioteca `react-navigation` ao invés dessa primeira.
+- `surge`, não foi utilizado porque não realizamos deploys de assets estáticos
+  de CDN.
+- `sweetalert`, como preferi utilizar as caixas de diálogos nativas/padrão
+  do Android e iOS para não fugir muito do design utilizado para aplicativos
+  mobile.
+
+Para rodar o desafio nativo, é preciso antes instalar as dependências com
+`$ yarn` ou `$ npm i`, e depois executar o servidor watch com `$ yarn start`.
+Para gerar um build de depuração conectado no servidor watch, é preciso
+uma conexão ADB na máquina. É preciso também ter o SDK do Android mais
+recente, disponível no Android Studio ou como arquivo compactado no site
+do Android. Com tudo configurado, o build de depuração é gerado e instalado
+no aparelho com o comando `$ yarn android`.
+
+Para gerar um build de homologação sem servidor watch, é preciso utilizar o
+comando `$yarn android --variant release`.
+
+---
+
 O desafio em React se encontra na pasta `desafio/`. Para inicializar
 a aplicação em modo _watch_, basta usar o comando `$ yarn start` ou
 `$ npm run start` (assumindo que a instalação foi feita anteriormente
