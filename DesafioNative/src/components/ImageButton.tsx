@@ -4,24 +4,28 @@ import {View, TouchableOpacity, Image, ImageSourcePropType, Dimensions} from 're
 interface IImageButton {
   sourcePath: ImageSourcePropType,
   onPress: () => void,
+  size?: number
 }
 
-const ImageButton : React.FC<IImageButton> = ({ sourcePath, onPress }) => {
+const ImageButton : React.FC<IImageButton> = ({ sourcePath, onPress, size }) => {
   const {width} = Dimensions.get('window');
+
+  const WIDTH = size || 20;
+  const HEIGHT = size || 20;
 
   return (
     <View style={{
-      width: 16,
-      height: 16,
-      marginHorizontal: width * 0.01
+      width: WIDTH,
+      height: HEIGHT,
+      marginHorizontal: width * 0.02
     }}>
       <TouchableOpacity onPress={onPress} style={{
-        width: 16,
-        height: 16,
+        width: WIDTH,
+        height: HEIGHT,
       }}>
         <Image source={sourcePath} style={{
-          width: 16,
-          height: 16,
+          width: WIDTH,
+          height: HEIGHT,
           resizeMode: 'center',
         }}/>
       </TouchableOpacity>
