@@ -1,9 +1,8 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import ImageButton from './ImageButton';
 import {View, Text, Dimensions, TouchableWithoutFeedback, Alert} from 'react-native';
 
-import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
-import { removeUser } from 'src/store/users/actions';
+import { useNavigation } from 'react-navigation-hooks';
 
 interface IRow {
   cells: string[]
@@ -39,8 +38,6 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, remov
 
   const rowVerticalPadding = width * 0.025;
   const rowHorizontalPadding = width * 0.025;
-
-  const {navigate} = useNavigation();
 
   const [isVisible, setVisibility] = React.useState(false);
 
@@ -93,7 +90,11 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, remov
     );
   };
 
-  const handleEdit = editMe;
+  const handleEdit = () => {
+    if (editMe) {
+      return editMe();
+    };
+  };
 
   const belowCells = !!extraCells && extraCells.length > 0 ? extraCells : [];
 

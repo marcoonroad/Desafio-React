@@ -1,20 +1,11 @@
 import React from 'react';
 
 import {
-SafeAreaView,
-StyleSheet,
 ScrollView,
-View,
-Button,
-Text,
-StatusBar,
-Dimensions,
 } from 'react-native';
 
 import Header from '../components/Header';
 import Form from '../components/Form';
-import Table from '../components/Table';
-import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
 import {connect} from 'react-redux';
 import {IUser} from '../store/types';
 import {addUserAsync} from '../store/users/thunks';
@@ -48,7 +39,7 @@ const mapState = (state: AppState) => {
   };
 };
 
-const mapDispatch = (dispatch: any, ownProps: any) => ({
+const mapDispatch = (dispatch: any) => ({
   handleUserSubmit: (newUser: IUser) => {
     // FIXME: testing, remove on production
     if (Math.round(Math.random() * 10) <= 1) {

@@ -1,19 +1,12 @@
 import React from 'react';
 
 import {
-SafeAreaView,
-StyleSheet,
 ScrollView,
-View,
-Button,
-Text,
-StatusBar,
 Dimensions,
 } from 'react-native';
 
 import Header from '../components/Header';
 import Form from '../components/Form';
-import Table from '../components/Table';
 
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
 
@@ -37,14 +30,6 @@ const EditUser: React.FC<IEditUser> = ({ users, handleUserSubmit }) => {
   const user = users.filter(user => user.id === userId)[0];
   const differentUsers = users.filter(user => user.id !== userId);
   const otherUserIds = differentUsers.map(user => user.id);
-
-  const handleRegister = () => {
-    goBack();
-  };
-
-  const handleCancel = () => {
-    goBack();
-  };
 
   return (
     <ScrollView style={{

@@ -1,14 +1,11 @@
-import React, { useImperativeHandle } from 'react';
+import React from 'react';
 import {
-  SafeAreaView,
   View,
-  TouchableWithoutFeedback,
   Dimensions,
   FlatList
 } from 'react-native';
 import Row from './Row';
-import { NavigationEvents } from 'react-navigation';
-import { useNavigation, useIsFocused } from 'react-navigation-hooks';
+import { useNavigation } from 'react-navigation-hooks';
 
 interface IUser {
   id: number,

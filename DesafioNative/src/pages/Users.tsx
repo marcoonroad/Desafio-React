@@ -2,12 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {
-SafeAreaView,
-StyleSheet,
 ScrollView,
 View,
-Text,
-StatusBar,
 Button,
 Dimensions,
 } from 'react-native';
@@ -15,7 +11,7 @@ Dimensions,
 import Header from '../components/Header';
 import Table from '../components/Table';
 
-import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
+import { useNavigation } from 'react-navigation-hooks';
 
 import {AppState} from '../store';
 import {removeUserAsync} from '../store/users/thunks';
@@ -28,7 +24,7 @@ interface IUsers {
 
 
 const Users : React.FC<IUsers> = ({ users, removeUser }) => {
-  const {width, height} = Dimensions.get('window');
+  const {width} = Dimensions.get('window');
   const {navigate} = useNavigation();
 
   const handleNewUser = () => {
@@ -39,12 +35,6 @@ const Users : React.FC<IUsers> = ({ users, removeUser }) => {
     <ScrollView style={{
       backgroundColor: '#ffffff',
       flex: 1,
-      //height: height,
-      //width: width,
-    }}
-    contentContainerStyle={{
-      // flexGrow: 1,
-      // flex: 1,
     }}
     contentInsetAdjustmentBehavior="automatic"
     nestedScrollEnabled={true}
@@ -73,7 +63,7 @@ const mapState = (state: AppState) => ({
   users: Object.values(state.users.users.toJS()),
 });
 
-const mapDispatch = (dispatch: any, ownProps: any) => ({
+const mapDispatch = (dispatch: any) => ({
   removeUser: (id: number) => {
     // FIXME: only for test purposes, drop away from production
     if (Math.round(Math.random() * 10) <= 1) {

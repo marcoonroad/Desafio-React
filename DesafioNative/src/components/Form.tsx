@@ -1,6 +1,6 @@
 import React from 'react';
-import {Formik, FormikProps, Field, ErrorMessage} from 'formik';
-import {View, StyleSheet, Button, Text, Alert, TextInput, Dimensions} from 'react-native';
+import {Formik, FormikProps} from 'formik';
+import {View, Button, Text, Alert, TextInput, Dimensions} from 'react-native';
 import * as yup from 'yup';
 import {useNavigation} from 'react-navigation-hooks';
 import {IUser} from '../store/types';
@@ -94,7 +94,6 @@ const Form : React.FC<IUserForm> = ({
       };
 
   const submitText = user ? 'Save' : 'Register';
-  // const titleText = user ? 'Edit user' : 'Register new user';
 
   // can make HTTP requests to validate unique ID, for example
   const validation = async (values: IUserData) => {

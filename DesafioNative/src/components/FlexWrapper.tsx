@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
+import {View} from 'react-native';
 
 const FlexWrapper : (Component : React.FC) => React.FC = Component => {
   return () => {
