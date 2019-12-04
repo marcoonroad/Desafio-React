@@ -199,7 +199,7 @@ const Form: React.FC<IUserForm> = ({user, otherUserIds, handleUserSubmit}) => {
             <Text>Full name:</Text>
             <TextInput
               style={styles.formTextInput}
-              placeholder="nome do usuário"
+              placeholder="full name"
               value={values.name}
               onChangeText={handleChange('name')}
               onBlur={handleBlur('name')}
