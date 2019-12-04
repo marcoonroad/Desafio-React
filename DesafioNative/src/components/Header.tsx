@@ -19,13 +19,14 @@ const Header : React.FC<IHeader> = ({ title }) => {
           width: width * 0.3,
           height: width * 0.3,
           marginTop: width * 0.05,
-       // marginBottom: width * 0.05,
+          marginBottom: width * 0.05,
           marginLeft: 'auto',
           marginRight: 'auto',
         }} />
       <View style={{
         marginTop: width * 0.05,
         marginBottom: width * 0.05,
+        display: 'none',
       }}>
         <Text style={{
             color: '#ffffff',

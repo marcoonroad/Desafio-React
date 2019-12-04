@@ -21,16 +21,27 @@ ReloadInstructions,
 import Header from '../components/Header';
 import Table from '../components/Table';
 
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
+
 const Users : React.FC = () => {
-  const {width} = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
+  const {navigate} = useNavigation();
 
   return (
     <ScrollView style={{
       backgroundColor: '#ffffff',
+      flex: 1,
+      //height: height,
+      //width: width,
+    }}
+    contentContainerStyle={{
+      // flexGrow: 1,
+      // flex: 1,
     }}
     contentInsetAdjustmentBehavior="automatic"
     nestedScrollEnabled={true}
     >
+
       <Header title='Users List'/>
 
       <Table />
@@ -42,7 +53,7 @@ const Users : React.FC = () => {
         marginRight: 'auto',
         marginBottom: width * 0.05,
       }}>
-        <Button title="New User" onPress={() => null}
+        <Button title="New User" onPress={() => navigate('NewUser')}
           color='#4f5d73' />
       </View>
 
