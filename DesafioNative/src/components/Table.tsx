@@ -11,13 +11,32 @@ import Row from './Row';
 interface IUser {
   id: number,
   name: string,
-  email: string
+  email: string,
+  phone: string,
+  address: {
+    street ?: string,
+    suite ?: string,
+    city ?: string,
+    zipcode ?: string
+  }
 }
+
+const noData = 'N/A';
+
+const getAddress = (user: IUser) => {
+  const address = `${user.address.street || noData}, ${user.address.suite ||
+    noData}`;
+  const location = `${user.address.city || noData}, ${user.address.zipcode ||
+    noData}`;
+
+  return `${address} - ${location}`;
+};
 
 const renderItem = (user: IUser, index: number) => {
   const cells = [user.id.toString(), user.name, user.email];
+  const extraCells = [user.phone, getAddress(user)];
   return (
-    <Row cells={cells} indexCounter={index + 1} isHeader={false} />
+    <Row cells={cells} indexCounter={index + 1} isHeader={false} extraCells={extraCells} />
   );
 };
 
