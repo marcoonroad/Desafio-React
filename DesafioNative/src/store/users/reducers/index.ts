@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import initialUsers from '../../../static/users.json';
+const initialUsers = require('../../../static/users.json');
 
 import {
   IUser,

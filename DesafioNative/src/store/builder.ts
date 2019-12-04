@@ -1,5 +1,4 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import usersReducer from './users/reducers';
 
@@ -13,7 +12,7 @@ export const AppStore = () => {
   const middlewares = [thunkMiddleware];
   const enhancer = applyMiddleware(...middlewares);
 
-  const store = createStore(rootReducer, composeWithDevTools(enhancer));
+  const store = createStore(rootReducer, enhancer);
 
   return store;
 };

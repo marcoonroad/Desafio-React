@@ -32,11 +32,12 @@ const getAddress = (user: IUser) => {
   return `${address} - ${location}`;
 };
 
-const renderItem = (user: IUser, index: number) => {
+const renderItem = (user: IUser, index: number, removeUser: (id : number) => Promise<any>) => {
   const cells = [user.id.toString(), user.name, user.email];
   const extraCells = [user.phone, getAddress(user)];
   return (
-    <Row cells={cells} indexCounter={index + 1} isHeader={false} extraCells={extraCells} />
+    <Row cells={cells} indexCounter={index + 1} isHeader={false} extraCells={extraCells}
+      removeMe={() => removeUser(user.id)} />
   );
 };
 
@@ -48,7 +49,12 @@ const TableHeader: React.FC = () => {
   );
 };
 
-const Table: React.FC = () => {
+interface ITable {
+  users: IUser[],
+  removeUser: (id: number) => Promise<any>
+}
+
+const Table: React.FC<ITable> = ({ users, removeUser }) => {
   const {width} = Dimensions.get('window');
 
   return (
@@ -56,9 +62,9 @@ const Table: React.FC = () => {
       paddingVertical: width * 0.05
     }}>
       <FlatList
-        data={require('../static/users.json')}
+        data={ users }
         ListHeaderComponent={TableHeader}
-        renderItem={(options) => renderItem(options.item, options.index)}
+        renderItem={(options) => renderItem(options.item, options.index, removeUser)}
         keyExtractor={getId} />
     </View>
   );

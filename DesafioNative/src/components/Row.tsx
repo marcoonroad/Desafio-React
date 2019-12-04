@@ -3,12 +3,14 @@ import ImageButton from './ImageButton';
 import {View, Text, Dimensions, TouchableWithoutFeedback, Alert} from 'react-native';
 
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
+import { removeUser } from 'src/store/users/actions';
 
 interface IRow {
   cells: string[]
   indexCounter: number,
   isHeader?: boolean,
-  extraCells?: string[]
+  extraCells?: string[],
+  removeMe?: () => Promise<any>
 }
 
 const renderCell = (indexCounter: number, isHeader: boolean) => {
@@ -31,7 +33,7 @@ const renderCell = (indexCounter: number, isHeader: boolean) => {
   };
 };
 
-const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells }) => {
+const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, removeMe }) => {
   const {width} = Dimensions.get('window');
 
   const rowVerticalPadding = width * 0.025;
@@ -49,6 +51,20 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells }) => 
     setVisibility(!!extraCells && extraCells.length > 0 && !isVisible);
   };
 
+  const successOnDelete = () => {
+    Alert.alert(
+      'OK Computer',
+      'The user was excluded with success!'
+    );
+  };
+
+  const failureOnDelete = () => {
+    Alert.alert(
+      'Test/mock error',
+      'This is an automatically generated error to mock unexpected / unknown behaviors in development mode, please try again later'
+    );
+  };
+
   const handleDelete = () => {
     Alert.alert(
       'Are you sure?',
@@ -61,8 +77,16 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells }) => 
           },
           style: 'cancel',
         },
-        {text: 'OK', onPress: () => {
-          return;
+        {text: 'OK', onPress: async () => {
+          if (removeMe) {
+            try {
+              await removeMe();
+              successOnDelete();
+            } catch (reason) {
+              console.error(reason);
+              failureOnDelete();
+            }
+          }
         }},
       ]
     );

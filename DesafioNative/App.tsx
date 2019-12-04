@@ -65,6 +65,11 @@ const MainNavigator = createStackNavigator({
   },
 });
 
+import {Provider} from 'react-redux';
+import {AppStore} from './src/store';
+
+const store = AppStore();
+
 const Content = createAppContainer(MainNavigator);
 
 const App = () => {
@@ -83,4 +88,10 @@ const App = () => {
   );
 };
 
-export default App;
+const Root = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+export default Root;
