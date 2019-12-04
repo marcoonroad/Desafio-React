@@ -11,13 +11,6 @@ Button,
 Dimensions,
 } from 'react-native';
 
-import {
-LearnMoreLinks,
-Colors,
-DebugInstructions,
-ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 import Header from '../components/Header';
 import Table from '../components/Table';
 
@@ -26,6 +19,10 @@ import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
 const Users : React.FC = () => {
   const {width, height} = Dimensions.get('window');
   const {navigate} = useNavigation();
+
+  const handleNewUser = () => {
+    navigate('NewUser');
+  };
 
   return (
     <ScrollView style={{
@@ -53,7 +50,7 @@ const Users : React.FC = () => {
         marginRight: 'auto',
         marginBottom: width * 0.05,
       }}>
-        <Button title="New User" onPress={() => navigate('NewUser')}
+        <Button title="New User" onPress={handleNewUser}
           color='#4f5d73' />
       </View>
 

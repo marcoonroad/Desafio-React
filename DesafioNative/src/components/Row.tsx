@@ -2,6 +2,8 @@ import React, { useLayoutEffect } from 'react';
 import ImageButton from './ImageButton';
 import {View, Text, Dimensions, TouchableOpacity} from 'react-native';
 
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
+
 interface IRow {
   cells: string[]
   indexCounter: number,
@@ -34,6 +36,16 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader }) => {
   const rowVerticalPadding = width * 0.025;
   const rowHorizontalPadding = width * 0.025;
 
+  const {navigate} = useNavigation();
+
+  const handleDelete = () => {
+
+  };
+
+  const handleEdit = () => {
+    navigate('EditUser');
+  };
+
   return (
     <View style={{
       paddingVertical: rowVerticalPadding,
@@ -51,9 +63,9 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader }) => {
         flexDirection: 'row',
       }}>
         <ImageButton sourcePath={require('../static/delete-cross-icon.png')}
-          onPress={() => null} />
+          onPress={handleDelete} />
         <ImageButton sourcePath={require('../static/edit-pencil-icon.png')}
-          onPress={() => null} />
+          onPress={handleEdit} />
       </View>) : null}
     </View>
   )

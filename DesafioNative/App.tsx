@@ -30,16 +30,28 @@ import {
 import FlexWrapper from './src/components/FlexWrapper';
 import Users from './src/pages/Users';
 import NewUser from './src/pages/NewUser';
+import EditUser from './src/pages/EditUser';
 
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 const UsersScreen = FlexWrapper(Users);
 const NewUserScreen = FlexWrapper(NewUser);
+const EditUserScreen = FlexWrapper(EditUser);
 
 const MainNavigator = createStackNavigator({
-  Users: {screen: UsersScreen, navigationOptions: { title: 'Users List'} },
-  NewUser: {screen: NewUserScreen, navigationOptions: { title: 'New User'}},
+  Users: {
+    screen: UsersScreen,
+    navigationOptions: { title: 'Users List'}
+  },
+  NewUser: {
+    screen: NewUserScreen,
+    navigationOptions: { title: 'New User'}
+  },
+  EditUser: {
+    screen: EditUserScreen,
+    navigationOptions: { title: 'Edit User' }
+  }
 }, {
   initialRouteName: 'Users',
   defaultNavigationOptions: {

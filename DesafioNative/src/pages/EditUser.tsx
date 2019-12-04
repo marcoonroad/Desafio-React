@@ -16,7 +16,7 @@ import Table from '../components/Table';
 
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
 
-const NewUser: React.FC = () => {
+const EditUser: React.FC = () => {
   const {width, height} = Dimensions.get('window');
 
   const { goBack } = useNavigation();
@@ -53,7 +53,7 @@ const NewUser: React.FC = () => {
           width: width * 0.3,
           marginRight: width * 0.025,
         }}>
-          <Button title="Register" onPress={handleRegister}
+          <Button title="Save" onPress={handleRegister}
             color='#4f5d73' />
         </View>
 
@@ -69,4 +69,4 @@ const NewUser: React.FC = () => {
   );
 };
 
-export default NewUser;
+export default EditUser;
