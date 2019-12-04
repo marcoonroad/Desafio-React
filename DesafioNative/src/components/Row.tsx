@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import ImageButton from './ImageButton';
-import {View, Text, Dimensions, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, Dimensions, TouchableWithoutFeedback, Alert} from 'react-native';
 
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
 
@@ -50,7 +50,22 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells }) => 
   };
 
   const handleDelete = () => {
-
+    Alert.alert(
+      'Are you sure?',
+      'Once excluded, this user information will no longer be stored on database!',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {
+            return;
+          },
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => {
+          return;
+        }},
+      ]
+    );
   };
 
   const handleEdit = () => {
