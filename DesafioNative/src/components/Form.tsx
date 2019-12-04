@@ -304,7 +304,7 @@ const Form : React.FC<IUserForm> = ({
             <TextInput
               style={styles.formTextInput}
               placeholder="address zipcode"
-              value={values.address.street}
+              value={values.address.zipcode}
               onChangeText={handleChange('address.zipcode')}
               onBlur={handleBlur('address.zipcode')}/>
             <Text
