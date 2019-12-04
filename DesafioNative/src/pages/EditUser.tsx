@@ -12,14 +12,31 @@ Dimensions,
 } from 'react-native';
 
 import Header from '../components/Header';
+import Form from '../components/Form';
 import Table from '../components/Table';
 
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
 
-const EditUser: React.FC = () => {
+import {connect} from 'react-redux';
+
+import {IUser} from '../store/types';
+import {saveUserAsync} from '../store/users/thunks';
+import {AppState} from '../store';
+
+interface IEditUser {
+  users: IUser[];
+  handleUserSubmit: (updatedUser: IUser) => Promise<any>;
+}
+
+const EditUser: React.FC<IEditUser> = ({ users, handleUserSubmit }) => {
   const {width, height} = Dimensions.get('window');
 
   const { goBack } = useNavigation();
+  const userId = Number.parseInt(useNavigationParam('userId'), 10);
+
+  const user = users.filter(user => user.id === userId)[0];
+  const differentUsers = users.filter(user => user.id !== userId);
+  const otherUserIds = differentUsers.map(user => user.id);
 
   const handleRegister = () => {
     goBack();
@@ -37,36 +54,32 @@ const EditUser: React.FC = () => {
     nestedScrollEnabled={true}>
     <Header title='New User'/>
 
-    <View style={{
-        width: width,
-        backgroundColor: '#ffffff',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginBottom: width * 0.05,
-        marginTop: width * 0.05,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-    }}>
-        <View style={{
-          width: width * 0.3,
-          marginRight: width * 0.025,
-        }}>
-          <Button title="Save" onPress={handleRegister}
-            color='#4f5d73' />
-        </View>
+    <Form handleUserSubmit={handleUserSubmit} user={user}
+      otherUserIds={otherUserIds} />
 
-        <View style={{
-          width: width * 0.3,
-          marginLeft: width * 0.025,
-        }}>
-          <Button title="Cancel" onPress={handleCancel}
-            color="#777777"/>
-        </View>
-    </View>
     </ScrollView>
   );
 };
 
-export default EditUser;
+
+//
+
+
+const mapState = (state: AppState) => ({
+  users: Object.values(state.users.users.toJS()),
+});
+
+const mapDispatch = (dispatch: any, ownProps: any) => ({
+  handleUserSubmit: (updatedUser: IUser) => {
+    // FIXME: only for test purposes
+    if (Math.round(Math.random() * 10) <= 1) {
+      return Promise.reject('Unexpected error while saving user!');
+    }
+
+    return dispatch(saveUserAsync(updatedUser));
+  },
+});
+
+const ConnectedEditUser = connect(mapState, mapDispatch)(EditUser);
+
+export default ConnectedEditUser;

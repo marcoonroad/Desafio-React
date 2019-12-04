@@ -12,23 +12,20 @@ Dimensions,
 } from 'react-native';
 
 import Header from '../components/Header';
+import Form from '../components/Form';
 import Table from '../components/Table';
-
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
+import {connect} from 'react-redux';
+import {IUser} from '../store/types';
+import {addUserAsync} from '../store/users/thunks';
+import {AppState} from '../store';
 
-const NewUser: React.FC = () => {
-  const {width, height} = Dimensions.get('window');
+interface INewUser {
+  otherUserIds: number[],
+  handleUserSubmit: (newUser : IUser) => Promise<any>
+}
 
-  const { goBack } = useNavigation();
-
-  const handleRegister = () => {
-    goBack();
-  };
-
-  const handleCancel = () => {
-    goBack();
-  };
-
+const NewUser: React.FC<INewUser> = ({ otherUserIds, handleUserSubmit }) => {
   return (
     <ScrollView style={{
       backgroundColor: '#ffffff',
@@ -37,36 +34,31 @@ const NewUser: React.FC = () => {
     nestedScrollEnabled={true}>
     <Header title='New User'/>
 
-    <View style={{
-        width: width,
-        backgroundColor: '#ffffff',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginBottom: width * 0.05,
-        marginTop: width * 0.05,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-    }}>
-        <View style={{
-          width: width * 0.3,
-          marginRight: width * 0.025,
-        }}>
-          <Button title="Register" onPress={handleRegister}
-            color='#4f5d73' />
-        </View>
+    <Form otherUserIds={otherUserIds} handleUserSubmit={handleUserSubmit}/>
 
-        <View style={{
-          width: width * 0.3,
-          marginLeft: width * 0.025,
-        }}>
-          <Button title="Cancel" onPress={handleCancel}
-            color="#777777"/>
-        </View>
-    </View>
     </ScrollView>
   );
 };
 
-export default NewUser;
+const mapState = (state: AppState) => {
+  const users = Object.values(state.users.users.toJS());
+
+  return {
+    otherUserIds: users.map(user => user.id),
+  };
+};
+
+const mapDispatch = (dispatch: any, ownProps: any) => ({
+  handleUserSubmit: (newUser: IUser) => {
+    // FIXME: testing, remove on production
+    if (Math.round(Math.random() * 10) <= 1) {
+      return Promise.reject('Unexpected error while registering new user!');
+    }
+    return dispatch(addUserAsync(newUser));
+  },
+});
+
+const ConnectedNewUser = connect(mapState, mapDispatch)(NewUser);
+
+export default ConnectedNewUser;
+

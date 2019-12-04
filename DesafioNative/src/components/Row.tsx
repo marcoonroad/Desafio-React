@@ -10,7 +10,8 @@ interface IRow {
   indexCounter: number,
   isHeader?: boolean,
   extraCells?: string[],
-  removeMe?: () => Promise<any>
+  removeMe?: () => Promise<any>,
+  editMe?: () => void
 }
 
 const renderCell = (indexCounter: number, isHeader: boolean) => {
@@ -33,7 +34,7 @@ const renderCell = (indexCounter: number, isHeader: boolean) => {
   };
 };
 
-const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, removeMe }) => {
+const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, removeMe, editMe }) => {
   const {width} = Dimensions.get('window');
 
   const rowVerticalPadding = width * 0.025;
@@ -92,9 +93,7 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, remov
     );
   };
 
-  const handleEdit = () => {
-    navigate('EditUser');
-  };
+  const handleEdit = editMe;
 
   const belowCells = !!extraCells && extraCells.length > 0 ? extraCells : [];
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import {
   SafeAreaView,
   View,
@@ -7,6 +7,8 @@ import {
   FlatList
 } from 'react-native';
 import Row from './Row';
+import { NavigationEvents } from 'react-navigation';
+import { useNavigation, useIsFocused } from 'react-navigation-hooks';
 
 interface IUser {
   id: number,
@@ -32,12 +34,13 @@ const getAddress = (user: IUser) => {
   return `${address} - ${location}`;
 };
 
-const renderItem = (user: IUser, index: number, removeUser: (id : number) => Promise<any>) => {
+const renderItem = (user: IUser, index: number, removeUser: (id : number) => Promise<any>, navigate : any) => {
   const cells = [user.id.toString(), user.name, user.email];
   const extraCells = [user.phone, getAddress(user)];
   return (
     <Row cells={cells} indexCounter={index + 1} isHeader={false} extraCells={extraCells}
-      removeMe={() => removeUser(user.id)} />
+      removeMe={() => removeUser(user.id)}
+      editMe={() => navigate('EditUser', { userId: user.id.toString() })} />
   );
 };
 
@@ -56,6 +59,7 @@ interface ITable {
 
 const Table: React.FC<ITable> = ({ users, removeUser }) => {
   const {width} = Dimensions.get('window');
+  const {navigate} = useNavigation();
 
   return (
     <View style={{
@@ -64,7 +68,7 @@ const Table: React.FC<ITable> = ({ users, removeUser }) => {
       <FlatList
         data={ users }
         ListHeaderComponent={TableHeader}
-        renderItem={(options) => renderItem(options.item, options.index, removeUser)}
+        renderItem={(options) => renderItem(options.item, options.index, removeUser, navigate)}
         keyExtractor={getId} />
     </View>
   );
