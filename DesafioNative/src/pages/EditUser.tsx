@@ -1,14 +1,11 @@
 import React from 'react';
 
-import {
-ScrollView,
-Dimensions,
-} from 'react-native';
+import {ScrollView, Dimensions} from 'react-native';
 
 import Header from '../components/Header';
 import Form from '../components/Form';
 
-import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
+import {useNavigation, useNavigationParam} from 'react-navigation-hooks';
 
 import {connect} from 'react-redux';
 
@@ -21,10 +18,10 @@ interface IEditUser {
   handleUserSubmit: (updatedUser: IUser) => Promise<any>;
 }
 
-const EditUser: React.FC<IEditUser> = ({ users, handleUserSubmit }) => {
+const EditUser: React.FC<IEditUser> = ({users, handleUserSubmit}) => {
   const {width, height} = Dimensions.get('window');
 
-  const { goBack } = useNavigation();
+  const {goBack} = useNavigation();
   const userId = Number.parseInt(useNavigationParam('userId'), 10);
 
   const user = users.filter(user => user.id === userId)[0];
@@ -32,23 +29,24 @@ const EditUser: React.FC<IEditUser> = ({ users, handleUserSubmit }) => {
   const otherUserIds = differentUsers.map(user => user.id);
 
   return (
-    <ScrollView style={{
-      backgroundColor: '#ffffff',
-    }}
-    contentInsetAdjustmentBehavior="automatic"
-    nestedScrollEnabled={true}>
-    <Header title='New User'/>
+    <ScrollView
+      style={{
+        backgroundColor: '#ffffff',
+      }}
+      contentInsetAdjustmentBehavior="automatic"
+      nestedScrollEnabled={true}>
+      <Header title="New User" />
 
-    <Form handleUserSubmit={handleUserSubmit} user={user}
-      otherUserIds={otherUserIds} />
-
+      <Form
+        handleUserSubmit={handleUserSubmit}
+        user={user}
+        otherUserIds={otherUserIds}
+      />
     </ScrollView>
   );
 };
 
-
 //
-
 
 const mapState = (state: AppState) => ({
   users: Object.values(state.users.users.toJS()),
@@ -65,6 +63,9 @@ const mapDispatch = (dispatch: any, ownProps: any) => ({
   },
 });
 
-const ConnectedEditUser = connect(mapState, mapDispatch)(EditUser);
+const ConnectedEditUser = connect(
+  mapState,
+  mapDispatch,
+)(EditUser);
 
 export default ConnectedEditUser;

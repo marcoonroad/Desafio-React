@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-ScrollView,
-} from 'react-native';
+import {ScrollView} from 'react-native';
 
 import Header from '../components/Header';
 import Form from '../components/Form';
@@ -12,21 +10,21 @@ import {addUserAsync} from '../store/users/thunks';
 import {AppState} from '../store';
 
 interface INewUser {
-  otherUserIds: number[],
-  handleUserSubmit: (newUser : IUser) => Promise<any>
+  otherUserIds: number[];
+  handleUserSubmit: (newUser: IUser) => Promise<any>;
 }
 
-const NewUser: React.FC<INewUser> = ({ otherUserIds, handleUserSubmit }) => {
+const NewUser: React.FC<INewUser> = ({otherUserIds, handleUserSubmit}) => {
   return (
-    <ScrollView style={{
-      backgroundColor: '#ffffff',
-    }}
-    contentInsetAdjustmentBehavior="automatic"
-    nestedScrollEnabled={true}>
-    <Header title='New User'/>
+    <ScrollView
+      style={{
+        backgroundColor: '#ffffff',
+      }}
+      contentInsetAdjustmentBehavior="automatic"
+      nestedScrollEnabled={true}>
+      <Header title="New User" />
 
-    <Form otherUserIds={otherUserIds} handleUserSubmit={handleUserSubmit}/>
-
+      <Form otherUserIds={otherUserIds} handleUserSubmit={handleUserSubmit} />
     </ScrollView>
   );
 };
@@ -49,7 +47,9 @@ const mapDispatch = (dispatch: any) => ({
   },
 });
 
-const ConnectedNewUser = connect(mapState, mapDispatch)(NewUser);
+const ConnectedNewUser = connect(
+  mapState,
+  mapDispatch,
+)(NewUser);
 
 export default ConnectedNewUser;
-

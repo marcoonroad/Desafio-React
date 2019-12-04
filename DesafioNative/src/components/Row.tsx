@@ -1,39 +1,57 @@
 import React from 'react';
 import ImageButton from './ImageButton';
-import {View, Text, Dimensions, TouchableWithoutFeedback, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  TouchableWithoutFeedback,
+  Alert,
+} from 'react-native';
 
-import { useNavigation } from 'react-navigation-hooks';
+import {useNavigation} from 'react-navigation-hooks';
 
 interface IRow {
-  cells: string[]
-  indexCounter: number,
-  isHeader?: boolean,
-  extraCells?: string[],
-  removeMe?: () => Promise<any>,
-  editMe?: () => void
+  cells: string[];
+  indexCounter: number;
+  isHeader?: boolean;
+  extraCells?: string[];
+  removeMe?: () => Promise<any>;
+  editMe?: () => void;
 }
 
 const renderCell = (indexCounter: number, isHeader: boolean) => {
   const {width} = Dimensions.get('window');
   const rowHorizontalPadding = width * 0.025;
 
-  return (cell : string, index: number, cells: string[]) => {
+  return (cell: string, index: number, cells: string[]) => {
     const key = 'row-' + indexCounter.toString() + '-cell-' + index.toString();
 
     return (
-      <View key={key} style={{
-        width: width / (isHeader ? cells.length : cells.length + 1),
-        paddingHorizontal: rowHorizontalPadding,
-      }}>
-        <Text style={{
-          fontWeight: isHeader ? 'bold' : 'normal',
-        }}>{cell}</Text>
+      <View
+        key={key}
+        style={{
+          width: width / (isHeader ? cells.length : cells.length + 1),
+          paddingHorizontal: rowHorizontalPadding,
+        }}>
+        <Text
+          style={{
+            fontWeight: isHeader ? 'bold' : 'normal',
+          }}>
+          {cell}
+        </Text>
       </View>
     );
   };
 };
 
-const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, removeMe, editMe }) => {
+const Row: React.FC<IRow> = ({
+  cells,
+  indexCounter,
+  isHeader,
+  extraCells,
+  removeMe,
+  editMe,
+}) => {
   const {width} = Dimensions.get('window');
 
   const rowVerticalPadding = width * 0.025;
@@ -50,16 +68,13 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, remov
   };
 
   const successOnDelete = () => {
-    Alert.alert(
-      'OK Computer',
-      'The user was excluded with success!'
-    );
+    Alert.alert('OK Computer', 'The user was excluded with success!');
   };
 
   const failureOnDelete = () => {
     Alert.alert(
       'Test/mock error',
-      'This is an automatically generated error to mock unexpected / unknown behaviors in development mode, please try again later'
+      'This is an automatically generated error to mock unexpected / unknown behaviors in development mode, please try again later',
     );
   };
 
@@ -75,25 +90,28 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, remov
           },
           style: 'cancel',
         },
-        {text: 'OK', onPress: async () => {
-          if (removeMe) {
-            try {
-              await removeMe();
-              successOnDelete();
-            } catch (reason) {
-              console.error(reason);
-              failureOnDelete();
+        {
+          text: 'OK',
+          onPress: async () => {
+            if (removeMe) {
+              try {
+                await removeMe();
+                successOnDelete();
+              } catch (reason) {
+                console.error(reason);
+                failureOnDelete();
+              }
             }
-          }
-        }},
-      ]
+          },
+        },
+      ],
     );
   };
 
   const handleEdit = () => {
     if (editMe) {
       return editMe();
-    };
+    }
   };
 
   const belowCells = !!extraCells && extraCells.length > 0 ? extraCells : [];
@@ -101,42 +119,51 @@ const Row : React.FC<IRow> = ({ cells, indexCounter, isHeader, extraCells, remov
   return (
     <TouchableWithoutFeedback onPress={handleTouch}>
       <View>
-        <View style={{
-          paddingVertical: rowVerticalPadding,
-          backgroundColor: indexCounter % 2 === 1 ? '#f2f2f2' : '#ffffff',
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          {cells.map(renderCell(indexCounter, !!isHeader))}
-          {!isHeader ? (<View style={{
-            width: width / (cells.length + 1),
-            paddingHorizontal: rowHorizontalPadding,
+        <View
+          style={{
+            paddingVertical: rowVerticalPadding,
+            backgroundColor: indexCounter % 2 === 1 ? '#f2f2f2' : '#ffffff',
             flex: 1,
             flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}>
-            <ImageButton sourcePath={require('../static/delete-cross-icon.png')}
-              onPress={handleDelete} />
-            <ImageButton sourcePath={require('../static/edit-pencil-icon.png')}
-              onPress={handleEdit} />
-          </View>) : null}
+          {cells.map(renderCell(indexCounter, !!isHeader))}
+          {!isHeader ? (
+            <View
+              style={{
+                width: width / (cells.length + 1),
+                paddingHorizontal: rowHorizontalPadding,
+                flex: 1,
+                flexDirection: 'row',
+              }}>
+              <ImageButton
+                sourcePath={require('../static/delete-cross-icon.png')}
+                onPress={handleDelete}
+              />
+              <ImageButton
+                sourcePath={require('../static/edit-pencil-icon.png')}
+                onPress={handleEdit}
+              />
+            </View>
+          ) : null}
         </View>
 
-        <View style={{
-          paddingVertical: rowVerticalPadding,
-          backgroundColor: indexCounter % 2 === 1 ? '#f2f2f2' : '#ffffff',
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          display: isVisible ? 'flex' : 'none',
-        }}>
+        <View
+          style={{
+            paddingVertical: rowVerticalPadding,
+            backgroundColor: indexCounter % 2 === 1 ? '#f2f2f2' : '#ffffff',
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            display: isVisible ? 'flex' : 'none',
+          }}>
           {belowCells.map(renderCell(indexCounter, !!isHeader))}
         </View>
       </View>
     </TouchableWithoutFeedback>
-  )
+  );
 };
 
 export default Row;

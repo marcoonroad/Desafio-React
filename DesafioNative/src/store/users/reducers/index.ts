@@ -22,14 +22,14 @@ initialUsers.forEach((user: IUser) => {
 
 const usersReducer = (
   state = initialState,
-  action: IUserAction
+  action: IUserAction,
 ): IUsersState => {
   switch (action.type) {
     case ADD_USER:
       if (!state.users.get(action.data.id)) {
         const updated = state.users.set(
           action.data.id,
-          Immutable.fromJS(action.data)
+          Immutable.fromJS(action.data),
         );
         return {users: updated};
       }
@@ -39,7 +39,7 @@ const usersReducer = (
       if (state.users.get(action.data.id)) {
         const updated = state.users.set(
           action.data.id,
-          Immutable.fromJS(action.data)
+          Immutable.fromJS(action.data),
         );
         return {users: updated};
       }

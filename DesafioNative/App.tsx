@@ -39,31 +39,34 @@ const UsersScreen = FlexWrapper(Users);
 const NewUserScreen = FlexWrapper(NewUser);
 const EditUserScreen = FlexWrapper(EditUser);
 
-const MainNavigator = createStackNavigator({
-  Users: {
-    screen: UsersScreen,
-    navigationOptions: { title: 'Users List'}
-  },
-  NewUser: {
-    screen: NewUserScreen,
-    navigationOptions: { title: 'New User'}
-  },
-  EditUser: {
-    screen: EditUserScreen,
-    navigationOptions: { title: 'Edit User' }
-  }
-}, {
-  initialRouteName: 'Users',
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#4f5d73',
+const MainNavigator = createStackNavigator(
+  {
+    Users: {
+      screen: UsersScreen,
+      navigationOptions: {title: 'Users List'},
     },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
+    NewUser: {
+      screen: NewUserScreen,
+      navigationOptions: {title: 'New User'},
+    },
+    EditUser: {
+      screen: EditUserScreen,
+      navigationOptions: {title: 'Edit User'},
     },
   },
-});
+  {
+    initialRouteName: 'Users',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#4f5d73',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  },
+);
 
 import {Provider} from 'react-redux';
 import {AppStore} from './src/store';
@@ -78,10 +81,11 @@ const App = () => {
   return (
     <View style={{width, height, flex: 1}}>
       <StatusBar backgroundColor="#282c34" barStyle="light-content" />
-      <SafeAreaView style={{
-        backgroundColor: '#ffffff',
-        flex: 1,
-      }}>
+      <SafeAreaView
+        style={{
+          backgroundColor: '#ffffff',
+          flex: 1,
+        }}>
         <Content />
       </SafeAreaView>
     </View>

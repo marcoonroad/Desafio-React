@@ -21,7 +21,7 @@ interface IUserData {
     city: string;
     zipcode: string;
   };
-phone: string;
+  phone: string;
 }
 
 const phoneRegex = /\(\d\d\) \d{4,5}-\d{4}/;
@@ -40,11 +40,7 @@ const validationSchema = yup.object().shape({
   phone: yup.string().matches(phoneRegex, 'Please enter a valid phone number'),
 });
 
-const Form : React.FC<IUserForm> = ({
-  user,
-  otherUserIds,
-  handleUserSubmit,
-}) => {
+const Form: React.FC<IUserForm> = ({user, otherUserIds, handleUserSubmit}) => {
   const {goBack} = useNavigation();
   const {width} = Dimensions.get('window');
 
@@ -53,7 +49,7 @@ const Form : React.FC<IUserForm> = ({
       marginTop: width * 0.015,
       marginBottom: width * 0.015,
       width: width * 0.4,
-      height: width * 0.25
+      height: width * 0.25,
     },
     formGroup: {
       width: width * 0.5,
@@ -63,8 +59,8 @@ const Form : React.FC<IUserForm> = ({
       height: 40,
       borderColor: 'gray',
       borderBottomWidth: 1,
-      borderRadius: 0
-    }
+      borderRadius: 0,
+    },
   };
 
   const initialState: IUserData = user
@@ -138,10 +134,7 @@ const Form : React.FC<IUserForm> = ({
 
     try {
       await handleUserSubmit(user);
-      await Alert.alert(
-        'Très bien!',
-        modalText,
-      );
+      await Alert.alert('Très bien!', modalText);
       options.setSubmitting(false);
       goBack();
     } catch (reason) {
@@ -168,18 +161,20 @@ const Form : React.FC<IUserForm> = ({
     handleBlur,
     handleChange,
   }: FormikProps<IUserData>) => (
-    <View style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: width * 0.05,
-    }}>
-      <View style={{
+    <View
+      style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
+        marginTop: width * 0.05,
       }}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+        }}>
         <View style={styles.formGroup}>
           <View style={styles.formLabelContainer}>
             <Text>Identifier:</Text>
@@ -188,13 +183,16 @@ const Form : React.FC<IUserForm> = ({
               placeholder="identifier"
               value={values.id}
               onChangeText={handleChange('id')}
-              onBlur={handleBlur('id')}/>
+              onBlur={handleBlur('id')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.id && touched.id ? 'flex' : 'none'
-              }}>{errors.id}</Text>
+                display: errors.id && touched.id ? 'flex' : 'none',
+              }}>
+              {errors.id}
+            </Text>
           </View>
 
           <View style={styles.formLabelContainer}>
@@ -204,13 +202,16 @@ const Form : React.FC<IUserForm> = ({
               placeholder="nome do usuário"
               value={values.name}
               onChangeText={handleChange('name')}
-              onBlur={handleBlur('name')}/>
+              onBlur={handleBlur('name')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.name && touched.name ? 'flex' : 'none'
-              }}>{errors.name}</Text>
+                display: errors.name && touched.name ? 'flex' : 'none',
+              }}>
+              {errors.name}
+            </Text>
           </View>
 
           <View style={styles.formLabelContainer}>
@@ -220,13 +221,16 @@ const Form : React.FC<IUserForm> = ({
               placeholder="email"
               value={values.email}
               onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}/>
+              onBlur={handleBlur('email')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.email && touched.email ? 'flex' : 'none'
-              }}>{errors.email}</Text>
+                display: errors.email && touched.email ? 'flex' : 'none',
+              }}>
+              {errors.email}
+            </Text>
           </View>
 
           <View style={styles.formLabelContainer}>
@@ -236,13 +240,16 @@ const Form : React.FC<IUserForm> = ({
               placeholder="(00) 00000-0000"
               value={values.phone}
               onChangeText={handleChange('phone')}
-              onBlur={handleBlur('phone')}/>
+              onBlur={handleBlur('phone')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.phone && touched.phone ? 'flex' : 'none'
-              }}>{errors.phone}</Text>
+                display: errors.phone && touched.phone ? 'flex' : 'none',
+              }}>
+              {errors.phone}
+            </Text>
           </View>
         </View>
 
@@ -254,14 +261,22 @@ const Form : React.FC<IUserForm> = ({
               placeholder="address street"
               value={values.address.street}
               onChangeText={handleChange('address.street')}
-              onBlur={handleBlur('address.street')}/>
+              onBlur={handleBlur('address.street')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.address && errors.address.street &&
-                         touched.address && touched.address.street ? 'flex' : 'none'
-              }}>{errors.address && errors.address.street}</Text>
+                display:
+                  errors.address &&
+                  errors.address.street &&
+                  touched.address &&
+                  touched.address.street
+                    ? 'flex'
+                    : 'none',
+              }}>
+              {errors.address && errors.address.street}
+            </Text>
           </View>
 
           <View style={styles.formLabelContainer}>
@@ -271,14 +286,22 @@ const Form : React.FC<IUserForm> = ({
               placeholder="address suite"
               value={values.address.suite}
               onChangeText={handleChange('address.suite')}
-              onBlur={handleBlur('address.suite')}/>
+              onBlur={handleBlur('address.suite')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.address && errors.address.suite &&
-                         touched.address && touched.address.suite ? 'flex' : 'none'
-              }}>{errors.address && errors.address.suite}</Text>
+                display:
+                  errors.address &&
+                  errors.address.suite &&
+                  touched.address &&
+                  touched.address.suite
+                    ? 'flex'
+                    : 'none',
+              }}>
+              {errors.address && errors.address.suite}
+            </Text>
           </View>
 
           <View style={styles.formLabelContainer}>
@@ -288,14 +311,22 @@ const Form : React.FC<IUserForm> = ({
               placeholder="address city"
               value={values.address.city}
               onChangeText={handleChange('address.city')}
-              onBlur={handleBlur('address.city')}/>
+              onBlur={handleBlur('address.city')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.address && errors.address.city &&
-                         touched.address && touched.address.city ? 'flex' : 'none'
-              }}>{errors.address && errors.address.city}</Text>
+                display:
+                  errors.address &&
+                  errors.address.city &&
+                  touched.address &&
+                  touched.address.city
+                    ? 'flex'
+                    : 'none',
+              }}>
+              {errors.address && errors.address.city}
+            </Text>
           </View>
 
           <View style={styles.formLabelContainer}>
@@ -305,63 +336,76 @@ const Form : React.FC<IUserForm> = ({
               placeholder="address zipcode"
               value={values.address.zipcode}
               onChangeText={handleChange('address.zipcode')}
-              onBlur={handleBlur('address.zipcode')}/>
+              onBlur={handleBlur('address.zipcode')}
+            />
             <Text
               style={{
                 color: '#ff0000',
                 fontSize: 10,
-                display: errors.address && errors.address.zipcode &&
-                         touched.address && touched.address.zipcode ? 'flex' : 'none'
-              }}>{errors.address && errors.address.zipcode}</Text>
+                display:
+                  errors.address &&
+                  errors.address.zipcode &&
+                  touched.address &&
+                  touched.address.zipcode
+                    ? 'flex'
+                    : 'none',
+              }}>
+              {errors.address && errors.address.zipcode}
+            </Text>
           </View>
         </View>
       </View>
 
-      <View style={{
-        width: width,
-        backgroundColor: '#ffffff',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginBottom: width * 0.05,
-        marginTop: width * 0.05,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-    }}>
-        <View style={{
-          width: width * 0.3,
-          marginRight: width * 0.025,
+      <View
+        style={{
+          width: width,
+          backgroundColor: '#ffffff',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginBottom: width * 0.05,
+          marginTop: width * 0.05,
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
         }}>
-          <Button title={submitText} onPress={handleSubmit}
-            color='#4f5d73'
+        <View
+          style={{
+            width: width * 0.3,
+            marginRight: width * 0.025,
+          }}>
+          <Button
+            title={submitText}
+            onPress={handleSubmit}
+            color="#4f5d73"
             disabled={
               !!errors.id ||
               !!errors.name ||
               !!errors.email ||
               !!errors.phone ||
               isSubmitting
-            }/>
+            }
+          />
         </View>
 
-        <View style={{
-          width: width * 0.3,
-          marginLeft: width * 0.025,
-        }}>
-          <Button title="Cancel" onPress={handleCancel}
-            color="#777777"/>
+        <View
+          style={{
+            width: width * 0.3,
+            marginLeft: width * 0.025,
+          }}>
+          <Button title="Cancel" onPress={handleCancel} color="#777777" />
         </View>
-    </View>
-
+      </View>
     </View>
   );
 
   return (
-    <View style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
       <Formik
         initialValues={initialState}
         validate={validation}
